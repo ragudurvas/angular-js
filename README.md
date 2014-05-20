@@ -1,5 +1,7 @@
 angular-js
 ==========
+Resource Link: https://docs.angularjs.org/api/ngResource/
+
 1. Create a database and table using below code
 
 --
