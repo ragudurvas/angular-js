@@ -1,0 +1,35 @@
+<!doctype html>
+<html ng-app>
+    <head>
+	<title>This is a testing page</title>
+	<script src="js/angular.js"></script>
+	<script src="js/custom-script.js"></script>
+    </head>
+    <body>
+	<header> Hello World</header>
+	<nav>
+	    <a href="/html/">HTML</a> |
+	    <a href="/css/">CSS</a> |
+	    <a href="/js/">JavaScript</a> |
+	    <a href="/jquery/">jQuery</a>
+	</nav>
+	<div ng-controller="BlogCtrl">
+	    <form ng-submit="addToBlog()">
+		<label>Title:</label>
+		<input type="text" ng-model="titleName" placeholder="Enter title here" />
+		<label>Title:</label>
+		<textarea ng-model="sortDescription"></textarea>
+		<input class="btn-primary" type="submit" value="Post">
+	    </form>
+	    <hr>
+	    <span ng-init="fetch()"></span>
+	    <h2>Total Blog : {{ blogs.length }}   </h2>
+	    <div ng-repeat="blog in blogs">		
+		<h1>{{ blog.title }}</h1>		
+		<p>{{ blog.description }}</p>
+	    </div>
+	</div>
+	<footer>AJS Test@2014</footer>
+    </body>
+
+</html>
