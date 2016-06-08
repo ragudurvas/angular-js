@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Angular-1.4.8 Form Validation</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" crossorigin="anonymous">
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+</head>
+<body>
+<div ng-app="myApp">
+ <div class="container"> 
+ <div class="header clearfix">
+        <h3 class="text-muted">Angular Form Validation </h3>
+ </div>
+	  
+<form class="form-horizontal" novalidate name="frmTestValidation">
+  <div class="form-group">
+    <label for="inputEmail3" class="col-sm-2 control-label">First Name</label>
+    <div class="col-sm-4">
+	<input
+		type="text" 
+		class="form-control"
+		name="firstName"   
+		ng-model="firstName" 
+		pattern="[a-zA-Z ]*$"
+		required
+		placeholder="Enter First Name">
+		<span id="helpBlock2" class="help-block" ng-show="frmTestValidation.firstName.$touched && frmTestValidation.firstName.$error.required">This field is required!</span>
+		<span id="helpBlock2" class="help-block" ng-show="frmTestValidation.firstName.$error.pattern">First Name must only character.</span>
+    </div>
+  </div>
+  
+   <div class="form-group">
+    <label for="inputEmail3" class="col-sm-2 control-label">Last Name</label>
+    <div class="col-sm-4">
+	<input
+		type="text" 
+		class="form-control"
+		ng-model="lastName" 
+		name="lastName" 
+		pattern="[a-zA-Z ]*$"
+		placeholder="Enter Last Name">
+		<span id="helpBlock2" class="help-block" ng-show="frmTestValidation.lastName.$error.pattern">Last Name must only character.</span>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <label for="inputEmail3" class="col-sm-2 control-label">Phone</label>
+    <div class="col-sm-4">
+	<input
+		type="text" 
+		class="form-control"
+		ng-model="phone" 
+		name="phone" 
+		pattern="^\s*(?:\+?(\d{1,3}))?[-. (]*(\d{3})[-. )]*(\d{3})[-. ]*(\d{4})(?: *x(\d+))?\s*$" 
+		required
+		placeholder="Enter Phone">
+		<span id="helpBlock2" class="help-block" ng-show="frmTestValidation.phone.$touched && frmTestValidation.phone.$error.required">This field is required!</span>
+		<span id="helpBlock2" class="help-block" ng-show="frmTestValidation.phone.$error.pattern && !frmTestValidation.phone.$error.required">Invalid Phone</span>
+    </div>
+  </div>
+  
+    <div class="form-group">
+    <label for="inputEmail3" class="col-sm-2 control-label ">Email</label>
+    <div class="col-sm-4">
+	<input	
+		type="email"
+		class="form-control"
+		name="myInput" 
+		ng-model="user.email"		 
+		required
+		placeholder="Enter Email">
+		<span id="helpBlock2" class="help-block" ng-show="frmTestValidation.myInput.$touched && frmTestValidation.myInput.$error.required">This field is required!</span>
+		<span id="helpBlock2" class="help-block" ng-show="frmTestValidation.myInput.$dirty && !frmTestValidation.myInput.$error.required && !frmTestValidation.$valid">Invalid email.</span>
+    </div>
+  </div>
+  
+ 
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <button type="submit" class="btn btn-default" ng-disabled="!frmTestValidation.$valid">Submit</button>
+    </div>
+  </div>
+</form>
+ <!--
+ Uncomment for debug
+ 
+ <p>form = {{user}}</p>
+ <p>Error = {{frmTestValidation.phone}}</p>
+-->  
+</div>
+</div>
+<script>
+var app = angular.module('myApp', []);
+</script>
+</body>
+</html>
